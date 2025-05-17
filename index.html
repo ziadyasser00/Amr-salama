@@ -1,101 +1,974 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منصة الأستاذ/ عمرو سلامة</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f4f4f9;
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
-    .container {
-      max-width: 100%;
-      margin: 20px auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      box-sizing: border-box;
-    }
-    h1 {
-      color: #333;
-    }
-    button {
-      background-color: #28a745;
-      color: white;
-      border: none;
-      padding: 15px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 18px;
-      margin-top: 20px;
-      width: 80%;
-      max-width: 300px;
-    }
-    button:hover {
-      background-color: #218838;
-    }
-    .img-container {
-      margin-top: 20px;
-    }
-    img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة أستاذ عمرو سلامة لتعليم الإنجليزية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- General Styles & Variables --- */
+        :root {
+            --primary-color: #007bff; /* Vibrant Blue */
+            --secondary-color: #28a745; /* Success Green */
+            --dark-blue: #0A192F; /* Dark background for professional feel */
+            --light-grey: #F8F9FA;
+            --white: #FFFFFF;
+            --text-dark: #343a40;
+            --text-light: #f1f1f1;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius: 12px;
+            --transition-speed: 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling to sections */
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--light-grey);
+            direction: rtl; /* Right-to-Left for Arabic */
+            text-align: right;
+            overflow-x: hidden; /* Prevent horizontal scroll on animations */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--border-radius);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color var(--transition-speed);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 14px 30px;
+            border-radius: 50px; /* Pill shape */
+            transition: all var(--transition-speed);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background-color: #218838;
+            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+        }
+
+        /* --- Header --- */
+        .main-header {
+            background: var(--white);
+            padding: 15px 0;
+            box-shadow: var(--card-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.7s ease-out forwards;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--dark-blue);
+            font-size: 2.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo i {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 35px;
+        }
+
+        .main-nav a {
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0; /* Changed to right for RTL */
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+            transition: width var(--transition-speed);
+        }
+
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+        
+        .main-nav a.active::after { /* For active link styling */
+            width: 100%;
+            background-color: var(--secondary-color);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--dark-blue);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .mobile-menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            background: linear-gradient(to bottom, var(--dark-blue) 0%, rgba(10, 25, 47, 0.85) 100%), url('images/hero-banner.jpg') no-repeat center center/cover;
+            color: var(--white);
+            padding: 120px 0;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-section .container {
+            display: flex;
+            flex-direction: row-reverse; /* Image on left, content on right */
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-content {
+            flex: 2;
+            text-align: right;
+            animation: fadeInRight 1s ease-out forwards;
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        @keyframes fadeInRight {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-content h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.8rem;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start; /* Align image to the left */
+            animation: fadeInLeft 1s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fadeInLeft {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-image img {
+            border: 5px solid var(--primary-color);
+            box-shadow: var(--card-shadow);
+            transform: rotate(3deg); /* Slight rotation for dynamic look */
+            transition: transform 0.5s ease;
+        }
+        .hero-image img:hover {
+            transform: rotate(0deg) scale(1.03);
+        }
+
+        /* --- Section General Styling --- */
+        section {
+            padding: 100px 0;
+            margin-bottom: 0; /* Remove margin between sections */
+            position: relative;
+            overflow: hidden;
+        }
+
+        section:nth-of-type(odd) { /* Alternate background colors */
+            background-color: var(--light-grey);
+        }
+        section:nth-of-type(even) {
+            background-color: var(--white);
+        }
+
+        h2.section-title {
+            font-size: 3.2rem;
+            color: var(--dark-blue);
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        h2.section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: 50%; /* Center for RTL */
+            transform: translateX(50%);
+            width: 100px;
+            height: 5px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- About Section --- */
+        .about-section .container {
+            display: flex;
+            flex-direction: row-reverse; /* Image on left, content on right */
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start; /* Align image to the left */
+            position: relative;
+            animation: fadeInLeft 1s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        .about-image img {
+            border: 5px solid var(--secondary-color);
+            box-shadow: var(--card-shadow);
+            transform: rotate(-2deg); /* Slight rotation */
+            transition: transform 0.5s ease;
+        }
+        .about-image img:hover {
+            transform: rotate(0deg) scale(1.03);
+        }
+        /* Decorative element for About image */
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 80px;
+            height: 80px;
+            border-top: 5px solid var(--primary-color);
+            border-left: 5px solid var(--primary-color);
+            border-radius: 15px 0 0 0;
+            z-index: -1;
+        }
+
+
+        .about-content {
+            flex: 2;
+            text-align: right;
+            animation: fadeInRight 1s ease-out forwards;
+            opacity: 0;
+            transform: translateX(50px);
+            animation-delay: 0.3s;
+        }
+
+        .about-content h3 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        /* --- Courses Section --- */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .course-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            padding: 30px;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border: 3px solid var(--light-grey);
+        }
+
+        .course-card h4 {
+            font-size: 2rem;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .course-card p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            color: var(--text-dark);
+        }
+        
+        /* Apply staggered animation to course cards */
+        .course-card:nth-child(1) { animation-delay: 0.2s; }
+        .course-card:nth-child(2) { animation-delay: 0.4s; }
+        .course-card:nth-child(3) { animation-delay: 0.6s; }
+
+
+        /* --- Testimonials Section --- */
+        .testimonials-section {
+            background-color: var(--primary-color); /* Using primary color for a bold statement */
+            color: var(--white);
+            padding: 100px 0;
+        }
+
+        .testimonials-section .section-title {
+            color: var(--white);
+        }
+        .testimonials-section .section-title::after {
+            background-color: var(--white);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.18);
+            padding: 35px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            transition: transform var(--transition-speed);
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .testimonial-card p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-style: italic;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .testimonial-card p::before,
+        .testimonial-card p::after {
+            font-family: 'Font Awesome 5 Free'; /* Using Font Awesome for quotes */
+            font-weight: 900;
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.3);
+            position: absolute;
+        }
+        .testimonial-card p::before {
+            content: "\f10d"; /* left quote */
+            top: -10px;
+            right: 0;
+        }
+        .testimonial-card p::after {
+            content: "\f10e"; /* right quote */
+            bottom: -10px;
+            left: 0;
+        }
+
+        .testimonial-card span {
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        
+        /* Staggered animation for testimonials */
+        .testimonial-card:nth-child(1) { animation-delay: 0.2s; }
+        .testimonial-card:nth-child(2) { animation-delay: 0.4s; }
+        .testimonial-card:nth-child(3) { animation-delay: 0.6s; }
+
+
+        /* --- Contact Section --- */
+        .contact-section {
+            text-align: center;
+            background-color: var(--white);
+            padding-bottom: 80px;
+        }
+
+        .contact-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            background: var(--light-grey);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 18px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            background-color: var(--white);
+            transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+            direction: rtl;
+            text-align: right;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-form button {
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            align-self: center;
+            min-width: 200px;
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+            animation-delay: 0.5s;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .contact-info i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .social-links a {
+            color: var(--dark-blue);
+            font-size: 2.8rem;
+            transition: color var(--transition-speed), transform var(--transition-speed);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            background: var(--dark-blue);
+            color: var(--text-light);
+            text-align: center;
+            padding: 40px 0;
+            font-size: 1rem;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        /* --- Responsive Design (Media Queries) --- */
+        @media (max-width: 992px) {
+            .hero-section .container,
+            .about-section .container {
+                flex-direction: column; /* Stack columns on smaller screens */
+                text-align: center;
+            }
+            .hero-image, .about-image {
+                justify-content: center;
+                margin-top: 40px;
+            }
+            .hero-image img, .about-image img {
+                max-width: 80%; /* Adjust image size */
+            }
+            .hero-content, .about-content {
+                text-align: center;
+            }
+            .hero-content h2 {
+                font-size: 3.2rem;
+            }
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            h2.section-title {
+                font-size: 2.8rem;
+            }
+            .about-content h3 {
+                font-size: 2.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none; /* Hide nav on mobile by default */
+                width: 100%;
+                background-color: var(--white);
+                position: absolute;
+                top: 85px; /* Below header */
+                right: 0;
+                box-shadow: var(--card-shadow);
+                padding: 20px 0;
+                border-radius: var(--border-radius);
+                transform: translateY(-10px);
+                opacity: 0;
+                transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            }
+            .main-nav.active {
+                display: block;
+                transform: translateY(0);
+                opacity: 1;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .main-nav a {
+                padding: 10px 20px;
+                display: block;
+            }
+            .main-nav a::after {
+                right: 50%;
+                transform: translateX(50%);
+            }
+            .mobile-menu-toggle {
+                display: block; /* Show hamburger icon */
+            }
+            .main-header .container {
+                justify-content: space-between;
+                flex-wrap: nowrap; /* Prevent logo and toggle from wrapping */
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            h2.section-title {
+                font-size: 2.5rem;
+                margin-bottom: 50px;
+            }
+            .hero-section {
+                padding: 80px 0 60px;
+            }
+            .hero-content h2 {
+                font-size: 2.8rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            .about-content h3 {
+                font-size: 2rem;
+            }
+            .course-card, .testimonial-card {
+                padding: 25px;
+            }
+            .course-card h4 {
+                font-size: 1.7rem;
+            }
+            .testimonial-card p {
+                font-size: 1.1rem;
+            }
+            .contact-form {
+                padding: 30px;
+            }
+            .social-links a {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2rem;
+            }
+            .logo i {
+                font-size: 1.5rem;
+            }
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            h2.section-title {
+                font-size: 2rem;
+            }
+            .about-content h3 {
+                font-size: 1.8rem;
+            }
+            .course-card h4 {
+                font-size: 1.5rem;
+            }
+            .contact-form input, .contact-form textarea {
+                padding: 15px;
+                font-size: 1rem;
+            }
+            .contact-form button {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>منصة الأستاذ/ عمرو سلامة</h1>
-    <div class="img-container">
-      <img src="https://i.imgur.com/a/yDmGrJK" alt="صورة الأستاذ عمرو سلامة" />
-    </div>
-    <p>اشترك الآن وتمتع بالمميزات الحصرية!</p>
-    <button onclick="sendPayment()">إرسال الدفع عبر واتساب</button>
 
-    <p>
-      <button onclick="window.location.href = 'http://OIN2h2ymdaQjY5d:OPFjcgtQgxJ1mTz@localhost:38115/data/data/com.qamar.editor.html/files/alif/etc/samples/welcome.html;">الحصص المسجلة</button>
-    </p>
-  </div>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo"><i class="fas fa-book-open"></i> أستاذ عمرو سلامة</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#hero" class="active">الرئيسية</a></li>
+                    <li><a href="#about">عن الأستاذ</a></li>
+                    <li><a href="#courses">الدورات</a></li>
+                    <li><a href="#testimonials">آراء الطلاب</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
 
-  <script>
-    // محاكاة إرسال طلب الدفع عبر واتساب
-    function sendPayment() {
-      const phoneNumber = "201277670620"; // رقم الواتساب الجديد
-      const message = "أرغب بالاشتراك في المنصة.";
-      window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
-    }
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>اتقن الإنجليزية بثقة مع الأستاذ عمرو سلامة</h2>
+                    <p>رحلتك نحو الطلاقة تبدأ هنا. كورسات مصممة خصيصًا لتناسب جميع المستويات.</p>
+                    <a href="#courses" class="btn btn-primary">اكتشف دوراتنا <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://via.placeholder.com/600x400/007bff/FFFFFF?text=Eng+Learning+Banner" alt="طلاب يدرسون اللغة الإنجليزية" loading="lazy">
+                </div>
+            </div>
+        </section>
 
-    // حسابات جيميل للأعضاء المحددين
-    const allowedEmails = [
-      "admin1@gmail.com",
-      "admin2@gmail.com"
-    ];
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/500x500/28a745/FFFFFF?text=الأستاذ+عمرو+سلامة" alt="صورة الأستاذ عمرو سلامة" loading="lazy">
+                </div>
+                <div class="about-content">
+                    <h3>من هو الأستاذ عمرو سلامة؟</h3>
+                    <p>أستاذ عمرو سلامة مدرس لغة إنجليزية بخبرة تزيد عن <strong>10 سنوات</strong>، متخصص في تبسيط قواعد اللغة وتنمية مهارات المحادثة والاستماع. يهدف إلى جعل تعلم الإنجليزية تجربة <strong>ممتعة ومثمرة</strong> لكل طالب.</p>
+                    <p>يهتم بتقديم محتوى تعليمي تفاعلي يواكب أحدث طرق التدريس العالمية، مع التركيز على التطبيق العملي للغة في الحياة اليومية لمساعدتك على التواصل بطلاقة وثقة.</p>
+                </div>
+            </div>
+        </section>
 
-    // قائمة الأعضاء (يتم تحديثها بواسطة الأدمن)
-    const members = ["محمد أحمد", "سارة علي"];
+        <section id="courses" class="courses-section">
+            <div class="container">
+                <h2 class="section-title">دوراتنا التدريبية</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/400x220/8061B4/FFFFFF?text=Grammar+Course" alt="دورة قواعد اللغة الإنجليزية" loading="lazy">
+                        <h4>دورة قواعد اللغة الإنجليزية للمبتدئين</h4>
+                        <p>ابدأ رحلتك من الصفر وتأسس في القواعد الأساسية للغة الإنجليزية ببساطة ووضوح، مع تمارين تطبيقية لترسيخ الفهم.</p>
+                        <a href="#" class="btn btn-secondary">اعرف المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/400x220/E89241/FFFFFF?text=Conversation+Class" alt="دورة المحادثة المتقدمة" loading="lazy">
+                        <h4>دورة المحادثة المتقدمة</h4>
+                        <p>تنمية مهارات التحدث بطلاقة وثقة في مختلف المواقف اليومية والمهنية، من خلال نقاشات تفاعلية ومواضيع شيقة.</p>
+                        <a href="#" class="btn btn-secondary">اعرف المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/400x220/4BB4DE/FFFFFF?text=IELTS+Preparation" alt="دورة تحضير IELTS" loading="lazy">
+                        <h4>دورة التحضير لاختبار IELTS</h4>
+                        <p>استعد جيداً لاختبار IELTS بجميع أقسامه (Reading, Writing, Listening, Speaking) وحقق الدرجة المطلوبة بثقة.</p>
+                        <a href="#" class="btn btn-secondary">اعرف المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    // تحديث قائمة الأعضاء إذا كانت الجيميل موجودة
-    function updateMemberList() {
-      const memberList = document.getElementById("members");
-      memberList.innerHTML = ""; // تفريغ القائمة
-      members.forEach(member => {
-        const li = document.createElement("li");
-        li.textContent = member;
-        memberList.appendChild(li);
-      });
-    }
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <h2 class="section-title">ماذا يقول طلابنا عن الأستاذ عمرو؟</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p>"لم أكن أتخيل أن تعلم الإنجليزية سيكون بهذه المتعة والسهولة. أستاذ عمرو رائع في تبسيط المعلومات المعقدة!"</p>
+                        <span>- أحمد سعيد، طالب جامعي</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"بفضل كورسات الأستاذ عمرو، تمكنت من تحسين نطقي ومحادثتي بشكل ملحوظ في وقت قصير. أنصح به بشدة."</p>
+                        <span>- سارة محمود، موظفة بشركة دولية</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"الشرح واضح ومنظم، والأهم أن هناك تطبيق عملي لكل ما نتعلمه. أصبحت أكثر ثقة في استخدام الإنجليزية."</p>
+                        <span>- يوسف علي، مهندس برمجيات</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    // تحديث القائمة عند تحميل الصفحة
-    document.addEventListener("DOMContentLoaded", updateMemberList);
-  </script>
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">تواصل معنا</h2>
+                <p>لديك أي أسئلة أو استفسارات حول الدورات أو طرق الدراسة؟ لا تتردد في التواصل معنا مباشرة.</p>
+                <form class="contact-form">
+                    <input type="text" placeholder="اسمك الكريم" required>
+                    <input type="email" placeholder="بريدك الإلكتروني" required>
+                    <textarea placeholder="رسالتك" rows="6" required></textarea>
+                    <button type="submit" class="btn btn-primary">إرسال الرسالة <i class="fas fa-paper-plane"></i></button>
+                </form>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> info@amrsalamaenglish.com</p>
+                    <p><i class="fas fa-phone"></i> +20 123 456 7890</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/amrsalamaenglish" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com/amrsalamaenglish" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/201234567890" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://linkedin.com/in/amrsalama" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 منصة أستاذ عمرو سلامة. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            const navLinks = document.querySelectorAll('.main-nav a');
+            const sections = document.querySelectorAll('section');
+            const header = document.querySelector('.main-header');
+
+            // --- Mobile Menu Toggle ---
+            if (mobileMenuToggle && mainNav) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                    mobileMenuToggle.querySelector('i').classList.toggle('fa-bars');
+                    mobileMenuToggle.querySelector('i').classList.toggle('fa-times'); // Change icon to X
+                });
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+                            mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+                        }
+                    });
+                });
+            }
+
+            // --- Active Nav Link on Scroll ---
+            const activateNavLink = () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - header.offsetHeight; // Adjust for sticky header
+                    if (pageYOffset >= sectionTop - 50) { // Add a small offset for better feel
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', activateNavLink);
+            // Call on load to set initial active link
+            activateNavLink();
+
+            // --- Scroll Animations (Intersection Observer) ---
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Trigger when 15% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Apply animation classes based on section/element
+                        if (entry.target.classList.contains('about-section')) {
+                            entry.target.querySelector('.about-image').style.animation = 'fadeInLeft 1s ease-out forwards';
+                            entry.target.querySelector('.about-content').style.animation = 'fadeInRight 1s ease-out forwards 0.3s';
+                        } else if (entry.target.classList.contains('courses-section')) {
+                            entry.target.querySelector('.section-title').style.animation = 'fadeInUp 0.8s ease-out forwards';
+                            entry.target.querySelectorAll('.course-card').forEach((card, index) => {
+                                card.style.animation = `fadeInUp 0.8s ease-out forwards ${0.2 + index * 0.15}s`;
+                            });
+                        } else if (entry.target.classList.contains('testimonials-section')) {
+                            entry.target.querySelector('.section-title').style.animation = 'fadeInUp 0.8s ease-out forwards';
+                            entry.target.querySelectorAll('.testimonial-card').forEach((card, index) => {
+                                card.style.animation = `fadeInUp 0.8s ease-out forwards ${0.2 + index * 0.15}s`;
+                            });
+                        } else if (entry.target.classList.contains('contact-section')) {
+                            entry.target.querySelector('.section-title').style.animation = 'fadeInUp 0.8s ease-out forwards';
+                            entry.target.querySelector('.contact-form').style.animation = 'fadeIn 1s ease-out forwards 0.3s';
+                            entry.target.querySelector('.contact-info').style.animation = 'fadeIn 1s ease-out forwards 0.5s';
+                        }
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections (except hero which animates on load)
+            document.querySelectorAll('section:not(#hero)').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
